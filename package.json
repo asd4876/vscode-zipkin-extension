@@ -1,0 +1,101 @@
+{
+    "name": "test-id",
+    "displayName": "test",
+    "description": "test descrip",
+    "version": "0.0.1",
+    "publisher": "devil4876",
+    "engines": {
+        "vscode": "^1.25.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello",
+        "onCommand:extension.prepare",
+        "onCommand:extension.up",
+        "onCommand:extension.clean"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.sayHello",
+                "title": "Hello World",
+                "category": "zipkin"
+            },
+            {
+                "command": "extension.prepare",
+                "title": "prepare",
+                "category": "zipkin"
+            },
+            {
+                "command": "extension.up",
+                "title": "up",
+                "category": "zipkin"
+            },
+            {
+                "command": "extension.clean",
+                "title": "clean",
+                "category": "zipkin"
+            },
+            {
+                "command": "extension.run",
+                "title": "run service",
+                "category": "zipkin"
+            },
+            {
+                "command": "extension.stop",
+                "title": "stop service",
+                "category": "zipkin"
+            },
+            {
+                "command": "extension.openWeb",
+                "title": "open in browser",
+                "category": "zipkin"
+            }
+            
+        ],
+        "views": {
+			"explorer": [
+				{
+					"id": "zipkinOutline",
+					"name": "zipkin outline"
+				}
+			]
+        },
+        "menus": {
+            "view/item/context": [
+                {
+                    "command": "extension.run",
+                    "when": "viewItem == serverStop"
+                },
+                {
+                    "command": "extension.stop",
+                    "when": "viewItem == serverRun"
+                },
+                {
+                    "command": "extension.openWeb",
+                    "when": "viewItem == serverRun"
+                }
+            ]
+        }
+        
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/js-yaml": "^3.11.2",
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^7.0.67",
+        "@types/xml-js": "^1.0.0",
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6"
+    }
+}
